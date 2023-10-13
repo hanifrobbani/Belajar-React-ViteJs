@@ -1,59 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function header(){
-  return(
-    <header>
-      <h1>Ini adalah header</h1>
-    </header>
-  );
-}
-
-function Main(){
-  return(
-    <header>
-      <h1>Ini adalah Main (content utama)</h1>
-    </header>
-  );
-}
-
-function footer(){
-  return(
-    <header>
-      <h1>Ini adalah footer</h1>
-    </header>
-  );
-}
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  // Fungsi untuk menambah angka
+  const handleTambah = () => {
+    if (count < 20) {
+      setCount(count + 1);
+    }
+  };
+
+  // Fungsi untuk mengurangi angka
+  const handleKurang = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="mx-5 my-5 p-3 d-flex justify-content flex-column gap-3">
+        <h2 className="text-center">{count}</h2>
+        <div className="d-flex justify-content-center align-content gap-3">
+          <button className="btn btn-primary mx-2" onClick={handleTambah}>
+            Tambah
+          </button>
+          <button className="btn btn-danger mx-2" onClick={handleKurang}>
+            Kurang
+          </button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
